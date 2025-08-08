@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/Ashwin-Pulipati/opt-timeline-calculator">
+  <a href="https://github.com/Ashwin-Pulipati/optipathway">
     <img src="public/logo.png" alt="Logo" width="80" height="170">
   </a>
 
@@ -55,8 +55,8 @@ Make sure you have Node.js and npm installed on your machine.
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/Ashwin-Pulipati/opt-timeline-calculator.git
-    cd opt-timeline-calculator
+    git clone https://github.com/Ashwin-Pulipati/optipathway.git
+    cd optipathway
     ```
 2.  **Install NPM packages:**
     ```sh
@@ -87,8 +87,8 @@ Don't forget to give the project a star! Thanks again!
 
 You can also report a bug or request a feature by opening an issue:
 
-- [Report Bug](https://github.com/Ashwin-Pulipati/opt-timeline-calculator/issues)
-- [Request Feature](https://github.com/Ashwin-Pulipati/opt-timeline-calculator/issues)
+- [Report Bug](https://github.com/Ashwin-Pulipati/optipathway/issues)
+- [Request Feature](https://github.com/Ashwin-Pulipati/optipathway/issues)
 
 ## License
 
@@ -98,4 +98,4 @@ Distributed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 Ashwin Pulipati - [LinkedIn](https://www.linkedin.com/in/ashwinpulipati/) - ashwinpulipati@gmail.com
 
-Project Link: [https://github.com/Ashwin-Pulipati/OptiPathway](https://github.com/Ashwin-Pulipati/OptiPathway)
+Project Link: [https://github.com/Ashwin-Pulipati/optipathway](https://github.com/Ashwin-Pulipati/optipathway)
