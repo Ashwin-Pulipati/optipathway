@@ -648,6 +648,13 @@ const StemOptProTips: React.FC = () => {
   );
 };
 
+/**
+ * Renders the STEM OPT Pro Tips page, displaying detailed guidance for F-1 students on the STEM OPT extension process.
+ *
+ * Wraps the content in a React Suspense boundary to support potential asynchronous loading of the main component.
+ *
+ * @returns The STEM OPT Pro Tips page component.
+ */
 export default function StemOptProTipsPage() {
   return (
     <Suspense>
