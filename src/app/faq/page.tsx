@@ -397,6 +397,11 @@ const FAQ = () => {
   );
 };
 
+/**
+ * Renders the FAQ page with suspenseful loading support.
+ *
+ * Wraps the FAQ component in a React Suspense boundary to enable suspenseful rendering.
+ */
 export default function FAQPage() {
   return (
     <Suspense>
