@@ -97,4 +97,4 @@ Distributed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 Ashwin Pulipati - [LinkedIn](https://www.linkedin.com/in/ashwinpulipati/) - ashwinpulipati@gmail.com
 
-Project Link: [https://github.com/Ashwin-Pulipati/opt-timeline-calculator](https://github.com/Ashwin-Pulipati/opt-timeline-calculator)
+Project Link: [https://github.com/Ashwin-Pulipati/OptiPathway](https://github.com/Ashwin-Pulipati/OptiPathway)
