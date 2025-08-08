@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { ThemeProvider as NextJSThemeProvider } from "next-themes";
 import { Quicksand, Roboto, Volkhov } from "next/font/google";
 import "./globals.css";
+import { Suspense } from "react";
 
 const quickSand = Quicksand({
   variable: "--font-quicksand",
@@ -48,10 +49,12 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
         >
-          <TooltipProvider>
+                    <TooltipProvider>
             <TimelineProvider>
-              <Navbar />
-              {children}
+              <Suspense fallback={<div>Loading...</div>}>
+                <Navbar />
+              </Suspense>
+              <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
               <Footer />
             </TimelineProvider>
           </TooltipProvider>

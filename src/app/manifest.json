@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "OptiPathway",
+  "short_name": "OptiPathway",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

@@ -1,6 +1,6 @@
 "use client";
 
-import { proTipExamples } from "@/components/main/examples-data/pro-tips-examples-data"; // Import your example data
+import { proTipExamples } from "@/components/main/examples-data/pro-tips-examples-data";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -13,7 +13,7 @@ const ExamplesPage: React.FC = () => {
   const [currentExample, setCurrentExample] = useState<any | null>(null);
 
   useEffect(() => {
-    const scenarioId = searchParams.get("scenario");
+        const scenarioId = searchParams.get("scenario");
     if (scenarioId) {
       setActiveExampleId(scenarioId);
       const foundExample = proTipExamples.find((ex) => ex.id === scenarioId);
