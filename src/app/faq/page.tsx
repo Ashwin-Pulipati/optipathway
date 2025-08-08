@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import {
   Accordion,
@@ -11,12 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const FAQ = () => {
   return (
@@ -402,4 +397,10 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default function FAQPage() {
+  return (
+    <Suspense>
+      <FAQ />
+    </Suspense>
+  );
+}

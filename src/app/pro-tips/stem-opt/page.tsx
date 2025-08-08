@@ -1,14 +1,14 @@
 "use client";
 
-import React from "react";
-import Link from "next/link"; // Assuming Next.js Link for internal navigation
+import React, { Suspense } from "react";
+import Link from "next/link";
 import {
   Info,
   AlertCircle,
   Lightbulb,
   CalendarCheck,
   ExternalLink,
-} from "lucide-react"; // Importing icons
+} from "lucide-react";
 import {
   Card,
   CardContent,
@@ -16,7 +16,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 
 const StemOptProTips: React.FC = () => {
   return (
@@ -441,10 +440,6 @@ const StemOptProTips: React.FC = () => {
                     Reduction in compensation or significant decrease in work
                     hours (especially below the 20-hour minimum).
                   </li>
-                  <li>
-                    Changes to employer&apos;s commitments or student&apos;s
-                    learning objectives outlined in Form I-983.
-                  </li>
                   <li>Loss of employment.</li>
                 </ul>
               </li>
@@ -548,9 +543,8 @@ const StemOptProTips: React.FC = () => {
             <div className="bg-muted/50 border border-border p-3 rounded-lg mt-3 flex items-start gap-3">
               <Lightbulb className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
               <p className="text-sm text-muted-foreground">
-                For precise calculations of your STEM OPT dates, including start
-                and end, and to see how they fit into your overall F-1 journey,
-                use our{" "}
+                To calculate your STEM OPT dates, including start and end, and
+                to see how they fit into your overall F-1 journey, use our{" "}
                 <Link
                   href="/tools?tab=stem"
                   className="text-primary hover:underline font-semibold"
@@ -654,4 +648,10 @@ const StemOptProTips: React.FC = () => {
   );
 };
 
-export default StemOptProTips;
+export default function StemOptProTipsPage() {
+  return (
+    <Suspense>
+      <StemOptProTips />
+    </Suspense>
+  );
+}
