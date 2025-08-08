@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/Ashwin-Pulipati/opt-timeline-calculator">
-    <img src="public/logo.png" alt="Logo" width="80" height="80">
+    <img src="public/logo.png" alt="Logo" width="80" height="170">
   </a>
 
   <h3 align="center">OptiPathway</h3>
