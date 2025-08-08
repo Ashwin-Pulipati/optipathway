@@ -8,7 +8,7 @@
   <p align="center">
     A comprehensive web application to help F-1 international students navigate the complexities of OPT, STEM OPT, and H1B timelines.
     <br />
-    <a href="https://opti-pathway.vercel.app/"><strong>View Demo »</strong></a>
+    <a href="https://optipathway.vercel.app/"><strong>View Demo »</strong></a>
   </p>
 </div>
 
@@ -22,12 +22,12 @@ OptiPathway is a modern, Frontend application designed to assist F-1 internation
 
 This project is built with a modern tech stack that ensures a fast, responsive, and user-friendly experience.
 
-*   **Framework:** [Next.js](https://nextjs.org/)
-*   **UI Library:** [React](https://react.dev/)
-*   **Language:** [TypeScript](https://www.typescriptlang.org/)
-*   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-*   **Components:** [Shadcn/UI](https://ui.shadcn.com/)
-*   **Deployment:** [Vercel](https://vercel.com/)
+- **Framework:** [Next.js](https://nextjs.org/)
+- **UI Library:** [React](https://react.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Components:** [Shadcn/UI](https://ui.shadcn.com/)
+- **Deployment:** [Vercel](https://vercel.com/)
 
 ## ✅ Key Features
 
@@ -45,7 +45,8 @@ To get a local copy up and running, follow these simple steps.
 ### Prerequisites
 
 Make sure you have Node.js and npm installed on your machine.
-* npm
+
+- npm
   ```sh
   npm install npm@latest -g
   ```
@@ -85,9 +86,9 @@ Don't forget to give the project a star! Thanks again!
 5.  Open a Pull Request
 
 You can also report a bug or request a feature by opening an issue:
+
 - [Report Bug](https://github.com/Ashwin-Pulipati/opt-timeline-calculator/issues)
 - [Request Feature](https://github.com/Ashwin-Pulipati/opt-timeline-calculator/issues)
-
 
 ## License
 

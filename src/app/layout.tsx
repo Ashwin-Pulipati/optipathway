@@ -5,8 +5,8 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 import type { Metadata } from "next";
 import { ThemeProvider as NextJSThemeProvider } from "next-themes";
 import { Quicksand, Roboto, Volkhov } from "next/font/google";
-import "./globals.css";
 import { Suspense } from "react";
+import "./globals.css";
 
 const quickSand = Quicksand({
   variable: "--font-quicksand",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://opti-pathway.vercel.app/",
+    url: "https://optipathway.vercel.app/",
     title: "OptiPathway",
     description:
       "A comprehensive web application to help F-1 international students navigate the complexities of OPT, STEM OPT, and H1B timelines.",
@@ -78,7 +78,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
         >
-                              <TooltipProvider>
+          <TooltipProvider>
             <TimelineProvider>
               <Navbar />
               <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
