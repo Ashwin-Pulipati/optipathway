@@ -24,7 +24,6 @@ const H1BCalculator: React.FC = () => {
   const [showResults, setShowResults] = useState<boolean>(false);
 
   useEffect(() => {
-    // Autofill the STEM OPT end date input if it's available from the context.
     if (stemOptEndDate) {
       setStemOptEndDateInput(stemOptEndDate);
       setShowResults(false);
@@ -32,7 +31,6 @@ const H1BCalculator: React.FC = () => {
   }, [stemOptEndDate]);
 
   useEffect(() => {
-    // Suggest H1B petition date based on the STEM OPT end date input.
     if (stemOptEndDateInput) {
       const stemEnd = parseISO(stemOptEndDateInput);
       let h1bPetitionYear = stemEnd.getFullYear();
@@ -99,7 +97,7 @@ const H1BCalculator: React.FC = () => {
             id="stemOptEndDate"
             value={stemOptEndDateInput}
             onChange={(e) => setStemOptEndDateInput(e.target.value)}
-            disabled={!!stemOptEndDate} // Disable if date is from context
+            disabled={!!stemOptEndDate}
             className={cn(
               "w-full",
               !!stemOptEndDate &&

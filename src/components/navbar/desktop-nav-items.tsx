@@ -4,7 +4,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -13,16 +12,14 @@ import {
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { proTipExamples } from "../main/examples-data/pro-tips-examples-data";
+import { usePathname } from "next/navigation";
 import { navItems } from "./constants/navbar.constants";
 import ThemeToggle from "./theme-toggle";
-
+import { ExamplesDropdownContent } from "./examples-dropdown-content";
+import { Suspense } from "react";
 
 const DesktopNavItems = () => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const scenarioId = searchParams.get("scenario");
 
   return (
     <div className="hidden lg:flex items-center space-x-4">
@@ -66,57 +63,9 @@ const DesktopNavItems = () => {
                         {child.name}
                       </DropdownMenuSubTrigger>
                       <DropdownMenuSubContent>
-                        <DropdownMenuItem
-                          className="font-bold text-foreground cursor-default"
-                          disabled
-                        >
-                          Initial OPT Scenarios
-                        </DropdownMenuItem>
-                        {proTipExamples
-                          .filter((ex) => ex.category === "Initial OPT")
-                          .map((example) => (
-                            <Link
-                              key={example.id}
-                              href={`${child.path}?scenario=${example.id}`}
-                            >
-                              <DropdownMenuItem
-                                className={cn(
-                                  "cursor-pointer",
-                                  scenarioId === example.id
-                                    ? "bg-accent text-accent-foreground"
-                                    : ""
-                                )}
-                              >
-                                {example.title}
-                              </DropdownMenuItem>
-                            </Link>
-                          ))}
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem
-                          className="font-bold text-foreground cursor-default"
-                          disabled
-                        >
-                          STEM OPT Scenarios
-                        </DropdownMenuItem>
-                        {proTipExamples
-                          .filter((ex) => ex.category === "STEM OPT")
-                          .map((example) => (
-                            <Link
-                              key={example.id}
-                              href={`${child.path}?scenario=${example.id}`}
-                            >
-                              <DropdownMenuItem
-                                className={cn(
-                                  "cursor-pointer",
-                                  scenarioId === example.id
-                                    ? "bg-accent text-accent-foreground"
-                                    : ""
-                                )}
-                              >
-                                {example.title}
-                              </DropdownMenuItem>
-                            </Link>
-                          ))}
+                        <Suspense fallback={<DropdownMenuItem>Loading...</DropdownMenuItem>}>
+                          <ExamplesDropdownContent childPath={child.path} />
+                        </Suspense>
                       </DropdownMenuSubContent>
                     </DropdownMenuSub>
                   );

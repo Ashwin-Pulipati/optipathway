@@ -24,15 +24,13 @@ const StemOptCalculator: React.FC = () => {
     unemploymentDaysUsed,
     setUnemploymentDaysUsed,
   } = useTimeline();
-
-  // State for the inputs, allowing them to be manually edited
+ 
   const [initialOptEndDateInput, setInitialOptEndDateInput] =
     useState<string>("");
   const [stemOptStartDateInput, setStemOptStartDateInput] =
     useState<string>("");
   const [showResults, setShowResults] = useState<boolean>(false);
-
-  // Sync state from context to local input state
+ 
   useEffect(() => {
     if (initialOptEndDate) {
       setInitialOptEndDateInput(initialOptEndDate);
@@ -40,7 +38,6 @@ const StemOptCalculator: React.FC = () => {
     }
   }, [initialOptEndDate]);
 
-  // Autofill STEM OPT Start Date based on the Initial OPT End Date input
   useEffect(() => {
     if (initialOptEndDateInput) {
       const initialEndDate = parseISO(initialOptEndDateInput);
@@ -142,7 +139,7 @@ const StemOptCalculator: React.FC = () => {
             id="initialOptEndDate"
             value={initialOptEndDateInput}
             onChange={(e) => setInitialOptEndDateInput(e.target.value)}
-            disabled={!!initialOptEndDate} // Disable if date is from context
+            disabled={!!initialOptEndDate}
             className={cn(
               "w-full",
               !!initialOptEndDate &&

@@ -49,11 +49,9 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
         >
-                    <TooltipProvider>
+                              <TooltipProvider>
             <TimelineProvider>
-              <Suspense fallback={<div>Loading...</div>}>
-                <Navbar />
-              </Suspense>
+              <Navbar />
               <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
               <Footer />
             </TimelineProvider>
