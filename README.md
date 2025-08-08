@@ -1,86 +1,100 @@
-# OptiPathway: Your F-1 Visa Timeline Assistant
+<div align="center">
+  <a href="https://github.com/Ashwin-Pulipati/opt-timeline-calculator">
+    <img src="public/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-![OptiPathway Logo](public/logo.png)
+  <h3 align="center">OptiPathway</h3>
 
-OptiPathway is a comprehensive web application designed to assist F-1 international students in navigating the complexities of their Optional Practical Training (OPT), STEM OPT Extension, and H1B Cap-Gap timelines. This tool provides calculators, visual timelines, and essential information to help students manage their immigration status effectively.
+  <p align="center">
+    A comprehensive web application to help F-1 international students navigate the complexities of OPT, STEM OPT, and H1B timelines.
+    <br />
+    <a href="https://opti-pathway.vercel.app/"><strong>View Demo »</strong></a>
+  </p>
+</div>
 
-## ✨ Features
+## About The Project
 
-*   **Graduation Timeline Calculator:** Understand key dates related to your program completion and grace periods.
-*   **Initial OPT Calculator:** Calculate critical deadlines for your initial 12-month OPT application and employment.
-*   **STEM OPT Calculator:** Determine eligibility and important dates for the 24-month STEM OPT extension.
-*   **H1B Cap-Gap Calculator:** Visualize and understand the Cap-Gap extension period between OPT/STEM OPT and H1B status.
-*   **Interactive Visual Timeline:** A dynamic representation of your F-1 journey, highlighting important milestones and deadlines.
-*   **Pro Tips & Examples:** Detailed guidance and scenario-based examples for various OPT and STEM OPT situations.
-*   **Frequently Asked Questions (FAQ):** Answers to common queries regarding F-1 regulations and processes.
-*   **Photo Tool (Placeholder):** A dedicated section for potential future features related to immigration photo requirements.
+OptiPathway is a modern, full-stack application designed to assist F-1 international students in managing their visa timelines with confidence. It provides a suite of calculators, visual timelines, and essential resources to demystify the often-confusing regulations surrounding Optional Practical Training (OPT), STEM OPT extensions, and the H1B Cap-Gap. This tool empowers students to take control of their F-1 journey, avoid common pitfalls, and plan their careers in the U.S. effectively.
 
-## 🚀 Technologies Used
+![Application Screenshot](https://i.imgur.com/rC24s7A.png)
 
-*   **Next.js:** React framework for building performant web applications.
-*   **React:** A JavaScript library for building user interfaces.
-*   **TypeScript:** A typed superset of JavaScript that compiles to plain JavaScript.
-*   **Tailwind CSS:** A utility-first CSS framework for rapidly building custom designs.
-*   **Shadcn/ui:** Reusable components built with Radix UI and Tailwind CSS.
+## ⚙️ Built With
 
-## ⚙️ Installation
+This project is built with a modern tech stack that ensures a fast, responsive, and user-friendly experience.
 
-To set up and run OptiPathway locally, follow these steps:
+*   **Framework:** [Next.js](https://nextjs.org/)
+*   **UI Library:** [React](https://react.dev/)
+*   **Language:** [TypeScript](https://www.typescriptlang.org/)
+*   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+*   **Components:** [Shadcn/UI](https://ui.shadcn.com/)
+*   **Deployment:** [Vercel](https://vercel.com/)
+
+## ✅ Key Features
+
+- **Graduation Timeline Calculator:** Pinpoint your 60-day grace period and other key dates around your program completion.
+- **Initial OPT & STEM OPT Calculators:** Determine your precise application windows and employment authorization periods.
+- **H1B Cap-Gap Calculator:** Understand and visualize the transition period from F-1 to H1B status.
+- **Interactive Visual Timeline:** Get a clear, personalized overview of your entire F-1 journey, from graduation to post-completion work authorization.
+- **Pro Tips & Examples:** Access detailed guides and real-world scenarios to navigate complex situations.
+- **Comprehensive FAQ:** Find answers to common questions about F-1 visa regulations and processes.
+
+## ▶️ Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+Make sure you have Node.js and npm installed on your machine.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
 
 1.  **Clone the repository:**
-    ```bash
+    ```sh
     git clone https://github.com/Ashwin-Pulipati/opt-timeline-calculator.git
     cd opt-timeline-calculator
     ```
-
-2.  **Install dependencies:**
-    ```bash
+2.  **Install NPM packages:**
+    ```sh
     npm install
-    # or
-    yarn install
     ```
-
 3.  **Run the development server:**
-    ```bash
+    ```sh
     npm run dev
-    # or
-    yarn dev
     ```
+4.  Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-4.  **Build for production:**
-    ```bash
-    npm run build
-    # or
-    yarn build
-    ```
+A student nearing graduation uses the Graduation Timeline Calculator to pinpoint their 60-day grace period. They then input that date into the Initial OPT Calculator to determine their exact application window, avoiding a costly mistake. The visual timeline gives them a clear overview of their entire year, reducing their anxiety about missing a critical deadline.
 
-    This will create an optimized production build in the `.next` directory.
+## Contributing
 
-## 💡 Usage
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Once the application is running, navigate through the different sections using the top navigation bar:
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-*   **Tools:** Access the various calculators (Graduation, Initial OPT, STEM OPT, H1B Cap-Gap) and view your personalized visual timeline.
-*   **Pro Tips:** Explore detailed guides and examples for common F-1 scenarios.
-*   **FAQ:** Find answers to frequently asked questions.
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
-## 🤝 Contributing
+You can also report a bug or request a feature by opening an issue:
+- [Report Bug](https://github.com/Ashwin-Pulipati/opt-timeline-calculator/issues)
+- [Request Feature](https://github.com/Ashwin-Pulipati/opt-timeline-calculator/issues)
 
-Contributions are welcome! If you have suggestions for improvements, new features, or bug fixes, please feel free to:
 
-1.  Fork the repository.
-2.  Create a new branch (`git checkout -b feature/your-feature-name`).
-3.  Make your changes.
-4.  Commit your changes (`git commit -m 'feat: Add new feature'`).
-5.  Push to the branch (`git push origin feature/your-feature-name`).
-6.  Open a Pull Request.
+## License
 
-## 📄 License
+Distributed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. (Note: You may need to create a LICENSE file if one doesn't exist).
+## Contact
 
-## 📧 Contact
+Ashwin Pulipati - [LinkedIn](https://www.linkedin.com/in/ashwinpulipati/) - ashwinpulipati@gmail.com
 
-For any questions or support, please open an issue in the GitHub repository.
+Project Link: [https://github.com/Ashwin-Pulipati/opt-timeline-calculator](https://github.com/Ashwin-Pulipati/opt-timeline-calculator)
