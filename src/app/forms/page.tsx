@@ -48,31 +48,47 @@ const Forms: React.FC = () => {
                 <strong className="text-foreground">
                   Form I-765 (Application for Employment Authorization)
                 </strong>
-                :
+                : You can always find the most current version on the official{" "}
                 <Link
-                  href="https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf"
+                  href="https://www.uscis.gov/i-765"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:underline inline-flex items-center gap-1 ml-2"
+                  className="text-primary hover:underline inline-flex items-center gap-1 font-medium"
                 >
-                  Official PDF
+                  <span>USCIS I-765 Page</span>
                   <ExternalLink className="h-4 w-4" />
                 </Link>
+                .
+                <p className="text-sm text-muted-foreground mt-2 pl-4 border-l-2 border-border ml-1">
+                  ↳ On that page, look for the{" "}
+                  <strong className="text-primary font-medium">
+                    &ldquo;Form Details&ldquo;
+                  </strong>{" "}
+                  section to find the latest PDF.
+                </p>
               </li>
               <li>
                 <strong className="text-foreground">
                   Form I-983 (Training Plan for STEM OPT Students)
                 </strong>
-                :
+                : The latest version is available on the official{" "}
                 <Link
-                  href="https://www.ice.gov/doclib/sevis/pdf/i983.pdf"
+                  href="https://studyinthestates.dhs.gov/stem-opt-hub"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary hover:underline inline-flex items-center gap-1 ml-2"
+                  className="text-primary hover:underline inline-flex items-center gap-1 font-medium"
                 >
-                  Official PDF
+                  <span>Study In The States</span>
                   <ExternalLink className="h-4 w-4" />
                 </Link>
+                .
+                <p className="text-sm text-muted-foreground mt-2 pl-4 border-l-2 border-border ml-1">
+                  ↳ On that page, find the{" "}
+                  <strong className="text-primary font-medium">
+                    &ldquo;Students and the Form I-983&ldquo;
+                  </strong>{" "}
+                  link under the Student Resources section to download the PDF.
+                </p>
               </li>
             </ul>
           </div>
@@ -93,47 +109,57 @@ const Forms: React.FC = () => {
                 <strong className="text-foreground">
                   SSN Application (Form SS-5)
                 </strong>
-                :
+                : You can download the latest version of the form from the
+                official{" "}
                 <Link
-                  href="https://secure.ssa.gov/ossnap/public/landingOSsnap"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline inline-flex items-center gap-1 ml-2"
+                  href="https://www.ssa.gov/forms/"
+                  className="text-primary hover:underline inline-flex items-center gap-1 font-medium"
                 >
-                  Online Application
+                  <span>SSA.gov</span>
                   <ExternalLink className="h-4 w-4" />
                 </Link>
+                .
+                <p className="text-sm text-muted-foreground mt-2 pl-4 border-l-2 border-border ml-1">
+                  ↳ While you can fill out the application online, it&apos;s
+                  often helpful to review the PDF beforehand to gather all
+                  necessary information.
+                </p>
               </li>
               <li>
                 <strong className="text-foreground">
                   I-94 Arrival/Departure Record
                 </strong>
-                : You can print your latest I-94 record here.
+                : You can print your latest I-94 record
                 <Link
                   href="https://i94.cbp.dhs.gov/home"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:underline inline-flex items-center gap-1 ml-2"
                 >
-                  I-94 Official Website
+                  here.
                   <ExternalLink className="h-4 w-4" />
                 </Link>
               </li>
             </ul>
             <div className="bg-accent/10 border border-accent p-4 rounded-lg flex items-start gap-3">
-              <Info className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-              <p className="text-sm font-medium">
-                <strong className="font-bold">
-                  Required Documents for SSN Application:
+              <Info className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+              <div className="text-sm">
+                <strong className="font-bold text-accent-foreground">
+                  Check Required Documents
                 </strong>
-                <ul className="text-muted-foreground list-disc list-inside ml-4 mt-2">
-                  <li>F-1 Visa and unexpired passport.</li>
-                  <li>I-94 Arrival/Departure Record.</li>
-                  <li>Most recent OPT I-20 with OPT approval on page 2.</li>
-                  <li>I-797 Approval Notice from USCIS.</li>
-                  <li>Your EAD Card.</li>
-                </ul>
-              </p>
+                <p className="text-muted-foreground mt-1">
+                  The documents you need can change. Always check the latest
+                  requirements on the official{" "}
+                  <Link
+                    href="https://www.ssa.gov/ssnumber/ss5doc.htm"
+                    className="text-primary hover:underline inline-flex items-center gap-1 font-medium"
+                  >
+                    <span>SSA.gov</span>
+                    <ExternalLink className="h-4 w-4" />
+                  </Link>{" "}
+                  website before visiting an office.
+                </p>
+              </div>
             </div>
           </div>
         </CardContent>
