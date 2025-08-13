@@ -60,7 +60,7 @@ const Forms: React.FC = () => {
                 </Link>
                 .
                 <p className="text-sm text-muted-foreground mt-2 pl-4 border-l-2 border-border ml-1">
-                  ↳ On that page, look for the{" "}
+                  ↳ Look for the{" "}
                   <strong className="text-primary font-medium">
                     &ldquo;Form Details&ldquo;
                   </strong>{" "}
@@ -83,11 +83,12 @@ const Forms: React.FC = () => {
                 </Link>
                 .
                 <p className="text-sm text-muted-foreground mt-2 pl-4 border-l-2 border-border ml-1">
-                  ↳ On that page, find the{" "}
+                  ↳ Find the{" "}
                   <strong className="text-primary font-medium">
                     &ldquo;Students and the Form I-983&ldquo;
                   </strong>{" "}
-                  link under the Student Resources section to download the PDF.
+                  link under the &ldquo;Student Resources&ldquo; section to
+                  download the PDF.
                 </p>
               </li>
             </ul>
