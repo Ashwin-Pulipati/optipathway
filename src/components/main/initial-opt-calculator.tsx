@@ -10,15 +10,35 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { addDays, addYears, format, parseISO } from "date-fns";
-import { useState } from "react";
+import { addDays, addYears, format, isAfter, isBefore, parseISO } from "date-fns";
+import { useEffect, useState } from "react";
 import { useTimeline } from "../../app/timeline-context";
+import { cn } from "@/lib/utils";
 
 const EadTimelineCalculator: React.FC = () => {
-  const { setInitialOptStartDate, setInitialOptEndDate } = useTimeline();
+  const { graduationDate, setInitialOptStartDate, setInitialOptEndDate } =
+    useTimeline();
   const [initialOptStartDateInput, setInitialOptStartDateInput] =
     useState<string>("");
   const [showResults, setShowResults] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+
+  // Determine the valid date range for OPT start date
+  const minOptStartDate = graduationDate
+    ? format(parseISO(graduationDate), "yyyy-MM-dd")
+    : "";
+  const maxOptStartDate = graduationDate
+    ? format(addDays(parseISO(graduationDate), 60), "yyyy-MM-dd")
+    : "";
+
+  useEffect(() => {
+    // Clear the input if the graduation date is removed
+    if (!graduationDate) {
+      setInitialOptStartDateInput("");
+      setShowResults(false);
+      setError("");
+    }
+  }, [graduationDate]);
 
   const formatDate = (date: Date): string => format(date, "MMMM do, yyyy");
   const initialUnemploymentLimit = 90;
@@ -36,7 +56,27 @@ const EadTimelineCalculator: React.FC = () => {
   }
 
   const handleCalculate = () => {
-    if (initialOptStartDateInput && initialOptEndDateCalc) {
+    setError(""); // Reset error on new calculation
+    if (!initialOptStartDateInput || !graduationDate) return;
+
+    const selectedStartDate = parseISO(initialOptStartDateInput);
+    const gradDate = parseISO(graduationDate);
+    const gracePeriodEndDate = addDays(gradDate, 60);
+
+    // Final validation check before showing results
+    if (isBefore(selectedStartDate, gradDate)) {
+      setError("OPT start date cannot be before your graduation date.");
+      setShowResults(false);
+      return;
+    }
+
+    if (isAfter(selectedStartDate, gracePeriodEndDate)) {
+      setError("OPT start date must be within 60 days after graduation.");
+      setShowResults(false);
+      return;
+    }
+
+    if (initialOptEndDateCalc) {
       setShowResults(true);
       setInitialOptStartDate(initialOptStartDateInput);
       setInitialOptEndDate(format(initialOptEndDateCalc, "yyyy-MM-dd"));
@@ -54,6 +94,11 @@ const EadTimelineCalculator: React.FC = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
+        {!graduationDate && (
+          <div className="mb-4 text-center text-sm text-destructive p-3 bg-destructive/10 rounded-lg">
+            Please enter your graduation date in the previous step first.
+          </div>
+        )}
         <div className="mb-6">
           <Label htmlFor="initialOptStartDate" className="mb-2">
             EAD Card Start Date:
@@ -62,15 +107,21 @@ const EadTimelineCalculator: React.FC = () => {
             type="date"
             id="initialOptStartDate"
             value={initialOptStartDateInput}
+            min={minOptStartDate}
+            max={maxOptStartDate}
+            disabled={!graduationDate}
             onChange={(e) => {
               setInitialOptStartDateInput(e.target.value);
               setShowResults(false);
+              setError(""); // Clear error when user changes date
             }}
+            className={cn(!graduationDate && "cursor-not-allowed bg-muted/50")}
           />
+          {error && <p className="text-sm text-destructive mt-2">{error}</p>}
         </div>
         <Button
           onClick={handleCalculate}
-          disabled={!initialOptStartDateInput}
+          disabled={!initialOptStartDateInput || !graduationDate}
           className="w-full"
           size="lg"
         >

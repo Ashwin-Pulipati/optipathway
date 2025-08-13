@@ -24,16 +24,19 @@ const StemOptCalculator: React.FC = () => {
     unemploymentDaysUsed,
     setUnemploymentDaysUsed,
   } = useTimeline();
- 
+
   const [initialOptEndDateInput, setInitialOptEndDateInput] =
     useState<string>("");
   const [stemOptStartDateInput, setStemOptStartDateInput] =
     useState<string>("");
   const [showResults, setShowResults] = useState<boolean>(false);
- 
+
   useEffect(() => {
     if (initialOptEndDate) {
       setInitialOptEndDateInput(initialOptEndDate);
+      setShowResults(false);
+    } else {
+      setInitialOptEndDateInput("");
       setShowResults(false);
     }
   }, [initialOptEndDate]);
@@ -46,12 +49,12 @@ const StemOptCalculator: React.FC = () => {
       setShowResults(false);
     } else {
       setStemOptStartDateInput("");
-      setShowResults(false);
     }
   }, [initialOptEndDateInput]);
 
   const formatDate = (date: Date): string => format(date, "MMMM do, yyyy");
   const stemUnemploymentLimit = 150;
+  const initialOptUnemploymentMax = 90;
 
   let stemOptStartDateCalc: Date | null = null;
   let stemOptEndDateCalc: Date | null = null;
@@ -68,11 +71,21 @@ const StemOptCalculator: React.FC = () => {
   const handleCalculate = () => {
     if (stemOptStartDateInput && stemOptEndDateCalc) {
       setShowResults(true);
-      setStemOptStartDate(
-        format(parseISO(stemOptStartDateInput), "yyyy-MM-dd")
-      );
+      setStemOptStartDate(stemOptStartDateInput);
       setStemOptEndDate(format(stemOptEndDateCalc, "yyyy-MM-dd"));
     }
+  };
+
+  const handleUnemploymentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = parseInt(e.target.value);
+    if (isNaN(value) || value < 0) {
+      value = 0;
+    }
+    // Cap the value at the maximum allowed for Initial OPT
+    if (value > initialOptUnemploymentMax) {
+      value = initialOptUnemploymentMax;
+    }
+    setUnemploymentDaysUsed(value);
   };
 
   const getReportDates = (): {
@@ -130,6 +143,11 @@ const StemOptCalculator: React.FC = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
+        {!initialOptEndDate && (
+          <div className="mb-4 text-center text-sm text-destructive p-3 bg-destructive/10 rounded-lg">
+            Please complete the Initial OPT step first.
+          </div>
+        )}
         <div className="mb-4">
           <Label htmlFor="initialOptEndDate" className="mb-2">
             Initial OPT End Date:
@@ -138,27 +156,20 @@ const StemOptCalculator: React.FC = () => {
             type="date"
             id="initialOptEndDate"
             value={initialOptEndDateInput}
-            onChange={(e) => setInitialOptEndDateInput(e.target.value)}
-            disabled={!!initialOptEndDate}
-            className={cn(
-              "w-full",
-              !!initialOptEndDate &&
-                "bg-muted text-muted-foreground cursor-not-allowed"
-            )}
+            readOnly
+            className={cn("w-full bg-muted/80 cursor-not-allowed")}
           />
         </div>
         <div className="mb-4">
           <Label htmlFor="stemOptStartDate" className="mb-2">
-            STEM OPT Start Date:
+            STEM OPT Start Date (Auto-calculated):
           </Label>
           <Input
             type="date"
             id="stemOptStartDate"
             value={stemOptStartDateInput}
-            onChange={(e) => {
-              setStemOptStartDateInput(e.target.value);
-              setShowResults(false);
-            }}
+            readOnly
+            className="bg-muted/80 cursor-not-allowed"
           />
         </div>
         <div className="mb-6">
@@ -169,9 +180,13 @@ const StemOptCalculator: React.FC = () => {
             type="number"
             id="unemploymentDaysUsed"
             value={unemploymentDaysUsed}
-            onChange={(e) =>
-              setUnemploymentDaysUsed(parseInt(e.target.value) || 0)
-            }
+            onChange={handleUnemploymentChange}
+            disabled={!initialOptEndDate}
+            className={cn(
+              !initialOptEndDate && "cursor-not-allowed bg-muted/50"
+            )}
+            min="0"
+            max={initialOptUnemploymentMax}
           />
         </div>
         <Button
