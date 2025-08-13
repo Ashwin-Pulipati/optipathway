@@ -105,7 +105,7 @@ const PhotoTool: React.FC = () => {
               <p className="text-sm text-muted-foreground">
                 This tool can automatically crop your picture to 600x600 pixels.
                 If you receive an error stating the photo already has 600x600
-                dimensions, it means your photo is correctly sized.
+                dimensions showing a cross sign, it means your photo is correctly sized.
               </p>
               <Button asChild size="lg" className={cn("rounded-full py-5")}>
                 <Link
@@ -119,34 +119,6 @@ const PhotoTool: React.FC = () => {
                 </Link>
               </Button>
             </div>
-          </div>
-
-          {/* Section: Tips for Mobile Users */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2 flex items-center gap-2">
-              📱 Tips for Mobile Users
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              If you&apos;re using a mobile device, consider these tips for
-              preparing your photo:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-              <li>
-                Take a picture of yourself at home, ideally with a plain white
-                background.
-              </li>
-              <li>
-                Several third-party apps (e.g., &quot;Passport Photo Maker&quot;
-                on Android) can help you set a white background and adjust photo
-                quality.
-              </li>
-              <li>
-                <strong className="text-destructive">
-                  Do not overdo it with photo adjustments, as excessive
-                  manipulation can lead to rejection.
-                </strong>
-              </li>
-            </ul>
           </div>
         </CardContent>
       </Card>
