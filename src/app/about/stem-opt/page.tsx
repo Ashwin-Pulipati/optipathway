@@ -45,7 +45,6 @@ const StemOptProTips: React.FC = () => {
                 <strong className="text-foreground">Validity</strong>: The STEM
                 OPT extension is valid for{" "}
                 <strong className="text-primary">2 years (24 months)</strong>.
-                You can apply for it only once.
               </li>
               <li>
                 <strong className="text-foreground">Timing</strong>: You can
@@ -62,7 +61,7 @@ const StemOptProTips: React.FC = () => {
                     SEVP Portal (as per your university&apos;s guidance) and
                     then apply for STEM OPT. For example, if your Initial OPT
                     Start Date is July 18, 2024, and End Date is July 17, 2025,
-                    and you get a new employer on July 16, 2025, report the new
+                    and you get a new employer on July 10, 2025, report the new
                     employer first.
                   </p>
                 </div>
@@ -88,22 +87,13 @@ const StemOptProTips: React.FC = () => {
                     </strong>
                     . You can check if a company is E-Verify registered{" "}
                     <Link
-                      href="https://www.e-verify.gov/employers/enrolled-employers"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="https://www.e-verify.gov/e-verify-employer-search"
                       className="text-primary hover:underline inline-flex items-center gap-1"
                     >
                       here
                       <ExternalLink className="h-4 w-4" />
                     </Link>
                     .
-                  </li>
-                  <li>
-                    <strong className="text-destructive">
-                      No self-employment or unpaid work/employment
-                    </strong>{" "}
-                    is allowed for STEM OPT unless specifically permitted by
-                    USCIS guidance (which is rare for STEM OPT).
                   </li>
                   <li>
                     Volunteer work generally does not count toward the
@@ -146,170 +136,200 @@ const StemOptProTips: React.FC = () => {
           {/* Section: Application Process */}
           <div className="space-y-4">
             <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2 flex items-center gap-2">
-              📝 Application Process: Forms I-765 & I-983
+              📝 STEM OPT Application Process
             </h2>
             <p className="text-muted-foreground leading-relaxed">
               You will file two key applications for your STEM OPT extension:
               Form I-765 (Application for Employment Authorization) and Form
               I-983 (Training Plan for STEM OPT Students).
             </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Applying for the STEM OPT extension involves two key forms: the{" "}
+              <strong className="text-foreground">Form I-983</strong> (your
+              training plan, submitted to your DSO) and the{" "}
+              <strong className="text-foreground">Form I-765</strong> (your work
+              authorization application, submitted to USCIS).
+            </p>
             <div className="bg-muted/50 border border-border p-3 rounded-lg mt-3 flex items-start gap-3">
               <Lightbulb className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
               <p className="text-sm text-muted-foreground">
-                <strong className="font-bold">Photo Tip</strong>: Can you use
-                the same photo for I-765 that you submitted to USCIS last year?
-                If it&apos;s less than 6 months old, it&apos;s generally okay.
-                However, to be safe and avoid potential Requests for Evidence
-                (RFEs), it&apos;s always recommended to retake a new, recent
-                picture.
+                <strong className="font-bold">Photo Tip</strong>: Make sure
+                it&apos;s not less than 6 months old, it&apos;s. However,
+                it&apos;s always recommended to retake a new, recent picture.
               </p>
             </div>
+            {/* --- REQUIRED DOCUMENTS SECTION --- */}
+            <div>
+              <h3 className="text-xl font-serif font-semibold text-foreground mt-4 mb-2">
+                Required Documents for Form I-765
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                When preparing your OPT application, you must provide clear
+                digital copies of your documents. Ensure that all scans or
+                photos are in color and legible, without any filters or
+                alterations. Allowed formats typically include PDF, JPEG, TIF,
+                or TIFF.
+              </p>
 
-            <h3 className="text-xl font-semibold text-foreground mt-6 mb-3 font-serif">
-              Best Approach to Apply:
-            </h3>
-            <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
+              {/* Official USCIS Checklist Link - CORRECTED */}
+              <div className="mt-4 bg-accent/10 border border-accent p-4 rounded-lg flex items-start gap-3">
+                <Info className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                <div className="text-sm">
+                  <strong className="text-muted-foreground font-bold">
+                    Always Verify with the Official Source
+                  </strong>
+                  <p className="text-muted-foreground mt-1">
+                    Document requirements can change. For the most current list,
+                    refer to the official{" "}
+                    <Link
+                      href="https://www.uscis.gov/forms/filing-guidance/checklist-of-required-initial-evidence-for-form-i-765-for-informational-purposes-only"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover-underline inline-flex items-center gap-1 font-medium"
+                    >
+                      <span>USCIS I-765 Checklist</span>
+                      <ExternalLink className="h-4 w-4" />
+                    </Link>
+                    . Expand the &ldquo;General Requirements&rdquo;,
+                    &ldquo;Student Seeking Post-Completion Optional Practical
+                    Training (c)(3)(B)&rdquo; and &ldquo;Student with a Degree
+                    in Science, Technology, Engineering, or Mathematics (STEM)
+                    Who is Seeking A 24-Month STEM Extension of Optional
+                    Practical Training (c)(3)(C)&ldquo; sections to view the
+                    required documents.
+                  </p>
+                </div>
+              </div>
+              <ul className="mt-4 list-disc list-outside ml-5 space-y-3 text-muted-foreground">
+                <li>
+                  <strong className="text-foreground">
+                    Form I-20 with STEM OPT Recommendation:
+                  </strong>{" "}
+                  A copy of the new I-20 issued by your DSO that is endorsed for
+                  the 24-month STEM OPT extension. It&apos;s recommended to sign
+                  in <strong className="text-primary">blue ink.</strong>
+                </li>
+                <li>
+                  <strong className="text-foreground">
+                    Copy of Your STEM-Qualifying Degree:
+                  </strong>{" "}
+                  Provide evidence of your degree, such as a copy of your
+                  diploma or an official transcript that shows the degree
+                  conferred.
+                </li>
+                <li>
+                  <strong className="text-foreground">
+                    Most Recent Passport Size Photograph:
+                  </strong>{" "}
+                  Make sure it&apos;s not more than six months old. You must
+                  meet U.S. Department of State specifications. Check out the{" "}
+                  <Link
+                    href="/photo-tool"
+                    className="text-primary hover:underline font-semibold"
+                  >
+                    Photo Tool
+                  </Link>{" "}
+                  for details.
+                </li>
+                <li>
+                  <strong className="text-foreground">
+                    Form I-94 Arrival/Departure Record:
+                  </strong>{" "}
+                  Your most recent I-94, which you can retrieve from the{" "}
+                  <Link
+                    href="https://i94.cbp.dhs.gov/I94/#/home"
+                    className="text-primary hover:underline inline-flex items-center gap-1"
+                  >
+                    <span>here</span>
+                    <ExternalLink className="h-4 w-4" />
+                  </Link>
+                  .
+                </li>
+                <li>
+                  <strong className="text-foreground">
+                    Valid Passport & F-1 Visa:
+                  </strong>{" "}
+                  Copies of your passport&apos;s biographical page (front and
+                  back) and your F-1 visa page.
+                </li>
+                <li>
+                  <strong className="text-foreground">
+                    Previous EAD Cards (if applicable):
+                  </strong>{" "}
+                  Clear copies of the front and back of any previously issued
+                  Employment Authorization Documents, including your initial OPT
+                  EAD.
+                </li>
+              </ul>
+            </div>
+
+            {/* --- STEP-BY-STEP PROCESS --- */}
+            <ol className="list-decimal list-outside ml-5 space-y-6 text-muted-foreground">
+              {/* --- STEP 1: I-983 --- */}
               <li>
-                <strong className="text-foreground">
-                  First, Complete Form I-983
+                <strong className="text-foreground text-base">
+                  Complete the Form I-983 Training Plan with Your Employer
                 </strong>
-                :
-                <ul className="list-disc list-inside ml-4 mt-1 text-muted-foreground">
-                  <li>
-                    Fill out the I-983 form digitally using Adobe Reader,
-                    Microsoft Edge, or any reliable PDF tool.
-                  </li>
-                  <li>
-                    <strong className="text-primary">
-                      Digitally sign the PDF
-                    </strong>
-                    . There&apos;s no need to print, sign by hand, and then
-                    scan. Avoid using screenshots for signatures.
-                  </li>
-                  <li>
-                    <strong className="text-foreground">
-                      Section 3 (Employer Information)
-                    </strong>
-                    : The start date here should be your STEM OPT start date (
-                    <span className="font-bold text-primary">
-                      Illustrative Example
-                    </span>
-                    : July 18, 2025).
-                  </li>
-                  <li>
-                    <strong className="text-foreground">
-                      Section 5 (Employer Site Information)
-                    </strong>
-                    : This address should be your actual work location (e.g.,
-                    branch office address), not necessarily the company&apos;s
-                    headquarters if you work elsewhere. This section&apos;s
-                    information does not have to match the signee who signs the
-                    I-983 form for you, but it{" "}
-                    <strong className="text-primary">
-                      should match the supervisor&apos;s information that you
-                      report in your university&apos;s international student
-                      office/DSO
-                    </strong>
-                    .
-                    <div className="bg-muted/50 border border-border p-3 rounded-lg mt-3 flex items-start gap-3">
-                      <Info className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-1" />
-                      <p className="text-sm text-muted-foreground">
-                        <strong className="font-bold">
-                          Scenario Examples for Section 5 (Illustrative Only):
-                        </strong>
-                        <ul className="list-disc list-inside ml-4 mt-1">
-                          <li>
-                            <strong className="text-foreground">
-                              Working Remotely at a Branch (not HQ)
-                            </strong>
-                            : Employer Address = Company&apos;s HQ address; Site
-                            Address = Your home address.
-                          </li>
-                          <li>
-                            <strong className="text-foreground">
-                              Working Onsite at a Branch (not HQ)
-                            </strong>
-                            : Employer Address = Company&apos;s HQ address; Site
-                            Address = Specific branch office.
-                          </li>
-                          <li>
-                            <strong className="text-foreground">
-                              Working Remotely at the HQ (main office)
-                            </strong>
-                            : Employer Address = Company&apos;s HQ address; Site
-                            Address = Your home address.
-                          </li>
-                          <li>
-                            <strong className="text-foreground">
-                              Working Onsite at the HQ (main office)
-                            </strong>
-                            : Employer Address = Company&apos;s HQ address; Site
-                            Address = Same as employer address (HQ).
-                          </li>
-                        </ul>
-                      </p>
-                    </div>
-                  </li>
-                  <li className="mt-4">
-                    <strong className="text-foreground">
-                      Training Plan (Section 5, &quot;Student&apos;s Learning
-                      Objectives&quot; and &quot;Employer&apos;s
-                      Commitments&quot;)
-                    </strong>
-                    : Provide a clear, concise description of your training
-                    plan. Aim for{" "}
-                    <strong className="text-primary">4-6 sentences max</strong>{" "}
-                    for each question, focusing on what you will learn and how
-                    your employer will support your development. Use a
-                    third-person perspective (e.g., &quot;The student will
-                    develop skills in X by performing Y tasks...&quot;). Clarity
-                    is more important than length.
-                  </li>
-                  <li>
-                    <strong className="text-foreground">I-983 Page 5</strong>:
-                    This section can be left empty for now while applying. It
-                    should only be filled when you submit your 12-month and
-                    24-month final validation reports.
-                  </li>
-                </ul>
+                <p className="mt-1">
+                  This is your training plan. You and your employer must
+                  complete and sign it. This form is submitted directly to your
+                  DSO,{" "}
+                  <strong className="text-destructive">not to USCIS.</strong>
+                </p>
+                <div className="mt-2 bg-muted/50 border border-border p-3 rounded-lg text-sm">
+                  <p className="font-semibold text-muted-foreground">
+                    Key points for Form I-983:
+                  </p>
+                  <ul className="list-disc list-outside ml-5 mt-2 space-y-1">
+                    <li>
+                      <strong className="text-muted-foreground">
+                        Section 3 Start Date:
+                      </strong>{" "}
+                      This must be your official STEM OPT start date (the day
+                      after your initial OPT ends).
+                    </li>
+                    <li>
+                      <strong className="text-muted-foreground">
+                        Section 5 Site Address:
+                      </strong>{" "}
+                      This should be your actual physical work location.
+                    </li>
+                    <li>
+                      <strong className="text-muted-foreground">
+                        Page 5 Evaluations:
+                      </strong>{" "}
+                      Leave the self-evaluations on page 5 blank for the initial
+                      application.
+                    </li>
+                  </ul>
+                </div>
               </li>
+
+              {/* --- STEP 2: DSO --- */}
               <li>
-                <strong className="text-foreground">
-                  Make sure I-983 is Signed
+                <strong className="text-foreground text-base">
+                  Submit Your Signed I-983 to Your DSO
                 </strong>
-                : Confirm that your I-983 is fully completed and digitally
-                signed by both you and your employer.
+                <p className="mt-1">
+                  Send the completed I-983 to your Designated School Official
+                  (DSO). They will review it and, upon approval, issue a new
+                  Form I-20 endorsed for the STEM OPT extension.
+                </p>
               </li>
+
+              {/* --- STEP 3: I-765 --- */}
               <li>
-                <strong className="text-foreground">
-                  Next, Form I-765 (via USCIS Portal)
+                <strong className="text-foreground text-base">
+                  File Form I-765 with USCIS Online
                 </strong>
-                :
-                <ul className="list-disc list-inside ml-4 mt-1 text-muted-foreground">
-                  <li>
-                    Access the USCIS portal and begin filling out your I-765 for
-                    STEM OPT.
-                  </li>
-                  <li>
-                    <strong className="text-destructive">
-                      Save the unsigned I-765 draft
-                    </strong>{" "}
-                    in the portal.
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <strong className="text-foreground">
-                  Send both the unsigned I-765 & Signed I-983 Form via your
-                  university&apos;s international student office/DSO.
-                </strong>{" "}
-                Your DSO will review and endorse your I-20 before you submit to
-                USCIS.{" "}
-                <strong className="text-destructive">
-                  Do NOT submit Form I-983 directly to USCIS.
-                </strong>
+                <p className="mt-1">
+                  Once you receive your new STEM OPT-endorsed I-20, you can file
+                  Form I-765 through your MyUSCIS account. You must upload all
+                  the required documents listed above, including the new I-20.
+                </p>
               </li>
             </ol>
+
             <div className="bg-muted/50 border border-border p-3 rounded-lg mt-3 flex items-start gap-3">
               <Lightbulb className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
               <p className="text-sm text-muted-foreground">
@@ -445,7 +465,7 @@ const StemOptProTips: React.FC = () => {
               </li>
               <div className="bg-accent/10 border border-accent p-4 rounded-lg flex items-start gap-3">
                 <Lightbulb className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-                <p className="text-sm text-accent-foreground font-medium">
+                <div className="text-sm text-accent-foreground font-medium">
                   <strong className="text-muted-foreground font-bold">
                     In Short
                   </strong>
@@ -458,21 +478,18 @@ const StemOptProTips: React.FC = () => {
                     </li>
                     <li>
                       <strong className="text-primary">DSO (University)</strong>
-                      : All employment-related changes—including all of your job
-                      starts, ends, promotions, salary changes, site moves, and
-                      the full palette of I‑983 &ldquo;material
-                      changes&rdquo;—are reported to your DSO via your
-                      university&apos;s designated system (e.g., SEVP Portal or
-                      your school&apos;s specific portal).
+                      : All employment-related changes; including all of your
+                      job starts, ends, promotions, salary changes, site moves,
+                      and the full palette of I‑983 &ldquo;material
+                      changes&rdquo;; are reported to your DSO .
                     </li>
                   </ul>
-                </p>
+                </div>
               </div>
             </ul>
 
             <h3 className="text-xl font-semibold text-foreground mt-6 mb-3 flex items-center gap-2 font-serif">
-              <Info className="h-5 w-5 text-primary" /> Validation Reports (MUST
-              Submit via University System)
+              <Info className="h-5 w-5 text-primary" /> Validation Reports
             </h3>
             <p className="text-muted-foreground leading-relaxed">
               These are critical reports to maintain your STEM OPT status.
@@ -498,10 +515,10 @@ const StemOptProTips: React.FC = () => {
                   <p className="text-sm text-muted-foreground">
                     <strong className="font-bold">Note</strong>: Even if you
                     miss the due date to submit the validation report, you
-                    generally have an additional{" "}
-                    <strong className="text-primary">10 days</strong> after your
-                    due date within which you can report. However, relying on
-                    this grace period is risky and not advised.
+                    generally have an additional 10 days after your due date
+                    within which you can report. However, relying on this grace
+                    period is risky and{" "}
+                    <strong className="text-primary">NOT advised</strong>.
                   </p>
                 </div>
               </li>
@@ -521,9 +538,7 @@ const StemOptProTips: React.FC = () => {
                   <li>
                     Only the <strong className="text-primary">12-month</strong>{" "}
                     and <strong className="text-primary">24-month</strong>{" "}
-                    validation reports typically require submission via your
-                    university&apos;s designated system (e.g., SEVP Portal or
-                    your school&apos;s specific portal).
+                    validation reports typically require submission to your DSO.
                   </li>
                   <li>
                     The <strong className="text-primary">6-month</strong> and{" "}
@@ -618,12 +633,15 @@ const StemOptProTips: React.FC = () => {
               </li>
               <div className="bg-accent/10 border border-accent p-4 rounded-lg flex items-start gap-3">
                 <AlertCircle className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-                <p className="text-sm text-accent-foreground font-medium">
-                  <strong className="font-bold">Important</strong>: The Cap-Gap
-                  extension applies only if your H-1B petition is filed and
-                  accepted by USCIS with a change of status request. If you
-                  applied for STEM OPT previously, and then for H1B, the Cap-Gap
-                  would extend your STEM OPT (if it expires before Oct 1).
+                <p className="text-sm text-muted-foreground font-medium">
+                  <strong className="font-bold text-muted-foreground">
+                    Important
+                  </strong>
+                  : The Cap-Gap extension applies only if your H-1B petition is
+                  filed and accepted by USCIS with a change of status request.
+                  If you applied for STEM OPT previously, and then for H1B, the
+                  Cap-Gap would extend your STEM OPT (if it expires before Oct
+                  1).
                 </p>
               </div>
             </ul>

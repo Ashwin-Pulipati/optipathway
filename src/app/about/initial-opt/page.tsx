@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Info, AlertCircle, Lightbulb, ExternalLink, AlertTriangle } from "lucide-react";
+import { Info, AlertCircle, Lightbulb, ExternalLink, AlertTriangle, Clock } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -310,7 +310,7 @@ const InitialOptProTips: React.FC = () => {
                   to a personal email before you lose access after graduation.
                 </p>
                 <div className="mt-3 bg-muted/50 border border-border p-3 rounded-lg text-sm">
-                  <p className="text-foreground font-semibold">
+                  <p className="text-muted-foreground font-semibold">
                     Why this matters:
                   </p>
                   <ul className="list-disc list-outside ml-5 mt-2 space-y-1 text-muted-foreground">
@@ -407,6 +407,72 @@ const InitialOptProTips: React.FC = () => {
                 </ul>
               </li>
             </ol>
+          </div>
+
+          <div className="mt-6 space-y-4">
+            <h3 className="text-xl font-serif font-bold text-foreground flex items-center gap-2">
+              <Clock className="h-5 w-5 text-primary" />A Note on Processing
+              Times
+            </h3>
+
+            <div className="bg-muted/50 border border-border p-4 rounded-lg text-sm">
+              <div className="flex items-start gap-3">
+                <Info className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <strong className="font-bold text-muted-foreground">
+                    How Processing Times Can Affect Your OPT Start Date
+                  </strong>
+                  <p className="text-muted-foreground mt-1">
+                    USCIS processing times for Form I-765 can vary, often taking
+                    several weeks to months. It is crucial to apply as early as
+                    possible.
+                  </p>
+                  <ul className="list-disc list-outside ml-5 mt-2 space-y-2 text-muted-foreground">
+                    <li>
+                      If USCIS approves your application *after* your requested
+                      start date has passed, they will set your OPT start date
+                      to the date of the approval itself. Your OPT period will
+                      still last for 12 months from that new start date.
+                    </li>
+                    <li>
+                      You can check official estimates on the{" "}
+                      <Link
+                        href="https://egov.uscis.gov/processing-times/"
+                        className="text-primary hover:underline inline-flex items-center gap-1 font-medium"
+                      >
+                        <span>USCIS Processing Times</span>
+                        <ExternalLink className="h-4 w-4" />
+                      </Link>
+                      .
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* --- NEW EXAMPLE BLOCK --- */}
+              <div className="mt-4 bg-background border border-border p-3 rounded-lg">
+                <p className="font-semibold text-muted-foreground">
+                  Example Scenario:
+                </p>
+                <ul className="list-disc list-outside ml-5 mt-2 space-y-1 text-muted-foreground">
+                  <li>
+                    You request an OPT start date of{" "}
+                    <strong className="text-primary">July 10, 2025</strong>.
+                  </li>
+                  <li>
+                    Due to processing delays, USCIS approves your application on{" "}
+                    <strong className="text-primary">August 13, 2025</strong>.
+                  </li>
+                  <li>
+                    <strong className="text-muted-foreground">Result:</strong> Your
+                    new EAD card will show a start date of{" "}
+                    <strong className="text-primary">August 13, 2025</strong>,
+                    and an end date of{" "}
+                    <strong className="text-primary">August 12, 2026</strong>.
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           {/* Section: After Receiving EAD Card */}
