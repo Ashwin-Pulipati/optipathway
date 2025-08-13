@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,8 +10,32 @@ import {
 } from "@/components/ui/card";
 import { ArrowRight, Zap, Lightbulb, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 export default function HomePage() {
+  const [isAcknowledged, setIsAcknowledged] = useState(false);
+  const router = useRouter();
+
+  const handleContinue = () => {
+    if (isAcknowledged) {
+      router.push("/tools?tab=timeline");
+    }
+  };
+
   return (
     <div className="bg-background text-foreground min-h-screen flex flex-col items-center justify-center p-4 font-sans antialiased">
       <div className="text-center max-w-7xl space-y-8 px-4 sm:px-6">
@@ -24,20 +47,72 @@ export default function HomePage() {
           OPT to H1B Cap-Gap. Get precise dates and clear insights to plan your
           academic and professional future in the U.S.
         </p>
-        <div className="pt-4 animate-fade-in-up delay-400">
-          <Button
-            asChild
-            size="lg"
-            className={cn(
-              "inline-flex items-center hover:scale-110 rounded-full"
-            )}
-          >
-            <Link href="/tools?tab=timeline">
-              Start Your Timeline
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-        </div>
+
+        {/* --- MODIFICATION STARTS HERE --- */}
+
+        <AlertDialog onOpenChange={() => setIsAcknowledged(false)}>
+          <AlertDialogTrigger asChild>
+            <div className="pt-4 animate-fade-in-up delay-400">
+              <Button
+                size="lg"
+                className={cn(
+                  "inline-flex items-center hover:scale-110 rounded-full"
+                )}
+              >
+                Start Your Timeline
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle className="font-serif text-2xl">
+                A Quick & Important Reminder
+              </AlertDialogTitle>
+              <AlertDialogDescription className="text-base py-4">
+                Think of this app as your helpful co-pilot for planning.
+                It&apos;s great for getting a clear picture of your timeline,
+                but it is <strong className="text-primary">not</strong> a
+                substitute for official advice.
+                <br />
+                <br />
+                Your Designated School Official (DSO) is your single most
+                important resource. Please{" "}
+                <strong className="text-destructive underline">
+                  always reach out to your DSO and confirm the dates
+                </strong>{" "}
+                to ensure you&apos;re on the right track.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <div className="flex items-center space-x-3 my-4">
+              <Checkbox
+                id="acknowledgment"
+                checked={isAcknowledged}
+                onCheckedChange={(checked) =>
+                  setIsAcknowledged(checked as boolean)
+                }
+              />
+              <Label
+                htmlFor="acknowledgment"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                I understand and will always consult my DSO.
+              </Label>
+            </div>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={handleContinue}
+                disabled={!isAcknowledged}
+              >
+                Continue to App
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        {/* --- MODIFICATION ENDS HERE --- */}
+
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           <Card className="p-6 rounded-lg shadow-md border border-border animate-fade-in-up delay-600">
             <CardHeader className="p-0 mb-3 flex-row items-center gap-3">
