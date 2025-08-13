@@ -252,6 +252,8 @@ const InitialOptProTips: React.FC = () => {
                 <Link
                   href="https://i94.cbp.dhs.gov/I94/#/home"
                   className="text-primary hover:underline inline-flex items-center gap-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span>here</span>
                   <ExternalLink className="h-4 w-4" />
@@ -293,6 +295,8 @@ const InitialOptProTips: React.FC = () => {
                 <Link
                   href="https://my.uscis.gov/"
                   className="text-primary hover:underline inline-flex items-center gap-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   My USCIS
                   <ExternalLink className="h-4 w-4" />
@@ -388,6 +392,8 @@ const InitialOptProTips: React.FC = () => {
                         <Link
                           href="https://www.uscis.gov/g-1055"
                           className="text-primary hover:underline inline-flex items-center gap-1 font-medium"
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           <span>USCIS Fee Schedule page</span>
                           <ExternalLink className="h-4 w-4" />
@@ -439,6 +445,8 @@ const InitialOptProTips: React.FC = () => {
                       <Link
                         href="https://egov.uscis.gov/processing-times/"
                         className="text-primary hover:underline inline-flex items-center gap-1 font-medium"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <span>USCIS Processing Times</span>
                         <ExternalLink className="h-4 w-4" />

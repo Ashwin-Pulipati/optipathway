@@ -279,6 +279,8 @@ const StemOptCalculator: React.FC = () => {
                             item.title,
                             item.date
                           )}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           <Calendar className="h-5 w-5" />
                           <span>Add to Calendar</span>

@@ -115,6 +115,8 @@ const Forms: React.FC = () => {
                 <Link
                   href="https://www.ssa.gov/forms/"
                   className="text-primary hover:underline inline-flex items-center gap-1 font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span>SSA.gov</span>
                   <ExternalLink className="h-4 w-4" />
@@ -154,6 +156,8 @@ const Forms: React.FC = () => {
                   <Link
                     href="https://www.ssa.gov/ssnumber/ss5doc.htm"
                     className="text-primary hover:underline inline-flex items-center gap-1 font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <span>SSA.gov</span>
                     <ExternalLink className="h-4 w-4" />

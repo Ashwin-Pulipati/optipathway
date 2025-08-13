@@ -89,6 +89,8 @@ const StemOptProTips: React.FC = () => {
                     <Link
                       href="https://www.e-verify.gov/e-verify-employer-search"
                       className="text-primary hover:underline inline-flex items-center gap-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       here
                       <ExternalLink className="h-4 w-4" />
@@ -239,6 +241,8 @@ const StemOptProTips: React.FC = () => {
                   <Link
                     href="https://i94.cbp.dhs.gov/I94/#/home"
                     className="text-primary hover:underline inline-flex items-center gap-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <span>here</span>
                     <ExternalLink className="h-4 w-4" />
