@@ -134,8 +134,8 @@ const EadTimelineCalculator: React.FC = () => {
         initialOptEndDateCalc &&
         initialUnemploymentDeadline && (
           <div className="mt-8 space-y-4">
-            <Card className="bg-secondary/20 border-secondary shadow-inner">
-              <CardContent className="pt-6 space-y-4">
+            <Card className="bg-secondary/20 border-secondary shadow-inner py-0">
+              <CardContent className="p-4 md:p-6 pt-6 space-y-4">
                 <p className="text-foreground font-medium mb-4">
                   Here&apos;s your clear timeline:
                 </p>
