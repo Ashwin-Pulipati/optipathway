@@ -17,6 +17,9 @@
 OptiPathway is a modern, Frontend application designed to assist F-1 international students in managing their visa timelines with confidence. It provides a suite of calculators, visual timelines, and essential resources to demystify the often-confusing regulations surrounding Optional Practical Training (OPT), STEM OPT extensions, and the H1B Cap-Gap. This tool empowers students to take control of their F-1 journey, avoid common pitfalls, and plan their careers in the U.S. effectively.
 
 
+https://github.com/user-attachments/assets/93d3242d-d862-4898-9d74-0814538f4b1e
+
+
 ## ⚙️ Built With
 
 This project is built with a modern tech stack that ensures a fast, responsive, and user-friendly experience.
