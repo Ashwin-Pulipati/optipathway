@@ -33,7 +33,7 @@ const Footer = () => {
               Tools
             </Link>
             <Link
-              href="/pro-tips/initial-opt"
+              href="/about/initial-opt"
               className="hover:text-primary transition-colors"
             >
               Pro Tips
