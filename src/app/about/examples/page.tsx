@@ -47,7 +47,7 @@ const ExamplesPage: React.FC = () => {
             {proTipExamples.map((example) => (
               <Link
                 key={example.id}
-                href={`/pro-tips/examples?scenario=${example.id}`}
+                href={`/about/examples?scenario=${example.id}`}
                 className={cn(
                   "p-3 rounded-lg transition-colors duration-200 ease-in-out font-medium",
                   activeExampleId === example.id
