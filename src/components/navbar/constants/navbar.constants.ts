@@ -16,20 +16,20 @@ export const navItems = [
     path: "/photo-tool",
   },
   {
-    name: "Pro Tips",
-    path: "/pro-tips",
+    name: "About",
+    path: "/about",
     children: [
       {
         name: "Initial OPT",
-        path: "/pro-tips/initial-opt",
+        path: "/about/initial-opt",
       },
       {
         name: "STEM OPT",
-        path: "/pro-tips/stem-opt",
+        path: "/about/stem-opt",
       },
       {
         name: "Examples",
-        path: "/pro-tips/examples",
+        path: "/about/examples",
       },
     ],
   },
