@@ -1,64 +1,74 @@
 "use client";
 
-import * as React from "react";
-import { Moon, Sun, ChevronDown, Laptop } from "lucide-react";
-import { useTheme } from "next-themes";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Monitor, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-const ThemeToggle = () => {
+export default function ThemeToggle() {
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          size="default"
-          className={cn(
-            "rounded-full w-fit justify-start text-foreground px-2 py-1.5",
-            "hover:bg-accent hover:text-primary-foreground focus-visible:ring-ring focus-visible:ring-offset-2"
-          )}
-        >
-          {theme === "dark" ? (
-            <Moon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          ) : theme === "system" ? (
-            <Laptop className="h-[1.2rem] w-[1.2rem]" />
-          ) : (
-            <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          )}
-          <ChevronDown className="ml-auto h-4 w-4" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem
-          onClick={() => setTheme("light")}
-          className={cn(theme === "light" ? "bg-accent font-semibold" : "")}
-        >
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => setTheme("dark")}
-          className={cn(theme === "dark" ? "bg-accent font-semibold" : "")}
-        >
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => setTheme("system")}
-          className={cn(theme === "system" ? "bg-accent font-semibold" : "")}
-        >
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-};
+  // This hook is essential to prevent a hydration mismatch.
+  // The UI shouldn't be rendered until the client-side theme is known.
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-export default ThemeToggle;
+  const themeOptions = [
+    { id: "light", label: "Light", icon: <Sun size={18} /> },
+    { id: "dark", label: "Dark", icon: <Moon size={18} /> },
+    { id: "system", label: "System", icon: <Monitor size={18} /> },
+  ];
+
+  // Render a skeleton loader until the component is mounted to prevent layout shift.
+  if (!mounted) {
+    return (
+      <div
+        className="flex w-full items-center gap-1 rounded-full bg-muted p-1"
+        aria-hidden="true"
+      >
+        <div className="h-[34px] w-full rounded-full" />
+        <div className="h-[34px] w-full rounded-full" />
+        <div className="h-[34px] w-full rounded-full" />
+      </div>
+    );
+  }
+
+  return (
+    <TooltipProvider delayDuration={150}>
+      <div className="flex w-full items-center gap-1 rounded-full bg-muted p-1">
+        {themeOptions.map((option) => {
+          const isActive = theme === option.id;
+          return (
+            <Tooltip key={option.id}>
+              <TooltipTrigger asChild>
+                <button
+                  onClick={() => setTheme(option.id)}
+                  aria-label={`Switch to ${option.label} theme`}
+                  className={cn(
+                    "flex w-full items-center justify-center rounded-full p-2 transition-colors duration-200",
+                    isActive
+                      ? "bg-background text-primary shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {option.icon}
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{option.label}</p>
+              </TooltipContent>
+            </Tooltip>
+          );
+        })}
+      </div>
+    </TooltipProvider>
+  );
+}

@@ -1,112 +1,151 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { navItems } from "./constants/navbar.constants";
 import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navItems } from "./constants/navbar.constants";
+import { useEffect, useRef, useState } from "react";
 import ThemeToggle from "./theme-toggle";
-import { ExamplesDropdownContent } from "./examples-dropdown-content";
-import { Suspense } from "react";
 
 const MobileNavItems = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close the menu after navigation
+  useEffect(() => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Reset accordion when menu closes
+  useEffect(() => {
+    if (!isMenuOpen) {
+      setOpenAccordion(null);
+    }
+  }, [isMenuOpen]);
+
+  const toggleAccordion = (itemName: string) => {
+    setOpenAccordion(openAccordion === itemName ? null : itemName);
+  };
 
   return (
-    <div className="lg:hidden">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="secondary" size="icon">
-            <Menu className="h-5 w-5" />
-            <span className="sr-only">Toggle navigation menu</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-48">
-          {navItems.map((item) => {
-            const isActive =
-              item.path === pathname ||
-              (item.children &&
-                item.children.some((child) => pathname.startsWith(child.path)));
+    <div className="lg:hidden" ref={menuRef}>
+      <Button
+        variant="secondary"
+        size="icon"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label="Toggle navigation menu"
+      >
+        {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+      </Button>
 
-            return item.children ? (
-              <DropdownMenuSub key={item.name}>
-                <DropdownMenuSubTrigger
-                  className={cn(
-                    "cursor-pointer",
-                    isActive ? "bg-accent text-accent-foreground" : ""
-                  )}
-                >
-                  {item.name}
-                </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent>
-                  {item.children.map((child) => {
-                    if (child.name === "Examples") {
-                      return (
-                        <DropdownMenuSub key={child.name}>
-                          <DropdownMenuSubTrigger
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute top-full right-3 mt-2 z-50 w-64 origin-top-right rounded-xl bg-card border border-border shadow-lg"
+          >
+            <nav className="p-2 max-h-[70vh] overflow-y-auto">
+              <ul className="space-y-1">
+                {navItems.map((item) => {
+                  const isLinkActive = !item.children && pathname === item.path;
+                  const isAccordionActive =
+                    item.children?.some((child) =>
+                      pathname.startsWith(child.path)
+                    ) ?? false;
+
+                  return (
+                    <li key={item.name}>
+                      {item.children ? (
+                        <>
+                          <button
+                            onClick={() => toggleAccordion(item.name)}
                             className={cn(
-                              "cursor-pointer",
-                              pathname.startsWith(child.path)
-                                ? "bg-accent text-accent-foreground"
-                                : ""
+                              "flex items-center justify-between w-full p-3 rounded-md text-card-foreground font-semibold text-left hover:bg-muted",
+                              isAccordionActive && "bg-muted"
                             )}
                           >
-                            {child.name}
-                          </DropdownMenuSubTrigger>
-                          <DropdownMenuSubContent>
-                            <Suspense fallback={<DropdownMenuItem>Loading...</DropdownMenuItem>}>
-                              <ExamplesDropdownContent childPath={child.path} />
-                            </Suspense>
-                          </DropdownMenuSubContent>
-                        </DropdownMenuSub>
-                      );
-                    }
-                    return (
-                      <Link key={child.name} href={child.path}>
-                        <DropdownMenuItem
+                            <span>{item.name}</span>
+                            <ChevronDown
+                              size={18}
+                              className={cn(
+                                "transition-transform duration-200",
+                                openAccordion === item.name && "rotate-180"
+                              )}
+                            />
+                          </button>
+                          <AnimatePresence>
+                            {openAccordion === item.name && (
+                              <motion.ul
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                className="pl-4 mt-1 space-y-1 overflow-hidden"
+                              >
+                                {item.children.map((child) => (
+                                  <li key={child.name}>
+                                    <Link
+                                      href={child.path}
+                                      className={cn(
+                                        "block w-full p-2.5 rounded-md text-card-foreground hover:bg-muted text-sm",
+                                        pathname.startsWith(child.path) &&
+                                          "bg-primary text-primary-foreground hover:bg-primary/90"
+                                      )}
+                                    >
+                                      {child.name}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </motion.ul>
+                            )}
+                          </AnimatePresence>
+                        </>
+                      ) : (
+                        <Link
+                          href={item.path}
                           className={cn(
-                            "cursor-pointer",
-                            child.path === pathname
-                              ? "bg-accent text-accent-foreground"
-                              : ""
+                            "block w-full p-2 rounded-md text-card-foreground font-semibold hover:bg-muted",
+                            isLinkActive &&
+                              "bg-primary text-primary-foreground hover:bg-primary/90"
                           )}
                         >
-                          {child.name}
-                        </DropdownMenuItem>
-                      </Link>
-                    );
-                  })}
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
-            ) : (
-              <Link key={item.name} href={item.path}>
-                <DropdownMenuItem
-                  className={cn(
-                    "cursor-pointer",
-                    isActive ? "bg-accent text-accent-foreground" : ""
-                  )}
-                >
-                  {item.name}
-                </DropdownMenuItem>
-              </Link>
-            );
-          })}
-          <DropdownMenuSeparator />
-          <DropdownMenuItem className="p-0">
-            <ThemeToggle />
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+                          {item.name}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="p-2 mt-2 border-t border-border">
+                <ThemeToggle />
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
