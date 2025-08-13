@@ -86,8 +86,8 @@ const OptTimelineCalculator: React.FC = () => {
         applyEndDate &&
         gracePeriodStart &&
         gracePeriodEnd && (
-          <Card className="bg-secondary/20 border-secondary mt-8 shadow-inner">
-            <CardContent className="space-y-4 pt-6">
+          <Card className="bg-secondary/20 border-secondary mt-8 shadow-inner py-0">
+            <CardContent className="p-4 md:p-6 space-y-4 pt-6">
               <p className="text-foreground font-medium mb-4">
                 Here&apos;s your clear timeline:
               </p>

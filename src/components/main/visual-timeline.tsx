@@ -154,7 +154,7 @@ const VisualTimeline: React.FC = () => {
   }, [timelineItems]);
 
   return (
-    <div className="relative p-8">
+    <div className="relative p-0 md:p-8">
       <div ref={timelineRef} className="relative z-10 space-y-12">
         <div className="timeline-line animated"></div>
         {timelineItems.length > 0 ? (

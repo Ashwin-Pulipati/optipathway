@@ -15,6 +15,7 @@ import { addDays, addMonths, addYears, format, parseISO } from "date-fns";
 import { Calendar } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTimeline } from "../../app/timeline-context";
+import Link from "next/link";
 
 const StemOptCalculator: React.FC = () => {
   const {
@@ -162,7 +163,7 @@ const StemOptCalculator: React.FC = () => {
         </div>
         <div className="mb-4">
           <Label htmlFor="stemOptStartDate" className="mb-2">
-            STEM OPT Start Date (Auto-calculated):
+            STEM OPT Start Date:
           </Label>
           <Input
             type="date"
@@ -173,7 +174,7 @@ const StemOptCalculator: React.FC = () => {
           />
         </div>
         <div className="mb-6">
-          <Label htmlFor="unemploymentDaysUsed" className="mb-2">
+          <Label htmlFor="unemploymentDaysUsed" className="mb-2 leading-normal">
             Unemployment days used on Initial OPT:
           </Label>
           <Input
@@ -203,8 +204,8 @@ const StemOptCalculator: React.FC = () => {
         stemOptEndDateCalc &&
         remainingUnemploymentDays !== null && (
           <div className="mt-8 space-y-4">
-            <Card className="bg-secondary/20 border-secondary shadow-inner">
-              <CardContent className="space-y-4 pt-6">
+            <Card className="bg-secondary/20 border-secondary shadow-inner py-0">
+              <CardContent className="p-4 md:p-6 space-y-4 pt-6">
                 <p className="text-foreground font-medium mb-4">
                   Here&apos;s your clear timeline:
                 </p>
@@ -246,8 +247,8 @@ const StemOptCalculator: React.FC = () => {
                 </ul>
               </CardContent>
             </Card>
-            <Card className="bg-accent/30 border-accent shadow-inner">
-              <CardContent className="space-y-4 pt-6">
+            <Card className="bg-accent/30 border-accent shadow-inner py-0">
+              <CardContent className="p-4 md:p-6 space-y-4 pt-6">
                 <p className="text-foreground font-medium mb-4">
                   Click to add these reminders to your calendar:
                 </p>
@@ -255,7 +256,7 @@ const StemOptCalculator: React.FC = () => {
                   {getReportDates().map((item, index) => (
                     <li
                       key={index}
-                      className="p-4 bg-background rounded-lg shadow-sm border border-border flex justify-between items-center"
+                      className="p-4 bg-background rounded-lg shadow-sm border border-border flex justify-between items-center flex-wrap gap-2 md:flex-nowrap"
                     >
                       <div>
                         <span className="font-bold text-foreground block mb-1 font-serif">
@@ -273,17 +274,15 @@ const StemOptCalculator: React.FC = () => {
                         size="sm"
                         className="flex items-center gap-2 text-xs flex-shrink-0"
                       >
-                        <a
+                        <Link
                           href={generateGoogleCalendarUrl(
                             item.title,
                             item.date
                           )}
-                          target="_blank"
-                          rel="noopener noreferrer"
                         >
                           <Calendar className="h-5 w-5" />
                           <span>Add to Calendar</span>
-                        </a>
+                        </Link>
                       </Button>
                     </li>
                   ))}
