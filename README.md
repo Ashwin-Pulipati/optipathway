@@ -12,7 +12,7 @@
   </p>
 </div>
 
-## About The Project
+## 📝 About The Project
 
 OptiPathway is a modern, Frontend application designed to assist F-1 international students in managing their visa timelines with confidence. It provides a suite of calculators, visual timelines, and essential resources to demystify the often-confusing regulations surrounding Optional Practical Training (OPT), STEM OPT extensions, and the H1B Cap-Gap. This tool empowers students to take control of their F-1 journey, avoid common pitfalls, and plan their careers in the U.S. effectively.
 
@@ -70,11 +70,11 @@ Make sure you have Node.js and npm installed on your machine.
     ```
 4.  Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-## Usage
+## 🚀 Usage
 
 A student nearing graduation uses the Graduation Timeline Calculator to pinpoint their 60-day grace period. They then input that date into the Initial OPT Calculator to determine their exact application window, avoiding a costly mistake. The visual timeline gives them a clear overview of their entire year, reducing their anxiety about missing a critical deadline.
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -92,7 +92,7 @@ You can also report a bug or request a feature by opening an issue:
 - [Report Bug](https://github.com/Ashwin-Pulipati/optipathway/issues)
 - [Request Feature](https://github.com/Ashwin-Pulipati/optipathway/issues)
 
-## License
+## 📄 License
 
 Distributed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
