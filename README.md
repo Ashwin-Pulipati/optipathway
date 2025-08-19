@@ -96,7 +96,7 @@ You can also report a bug or request a feature by opening an issue:
 
 Distributed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Contact
+## 💌 Contact
 
 Ashwin Pulipati - [LinkedIn](https://www.linkedin.com/in/ashwinpulipati/) - ashwinpulipati@gmail.com
 
