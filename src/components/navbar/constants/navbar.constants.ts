@@ -27,10 +27,6 @@ export const navItems = [
         name: "STEM OPT",
         path: "/about/stem-opt",
       },
-      {
-        name: "Examples",
-        path: "/about/examples",
-      },
     ],
   },
   {

@@ -5,7 +5,6 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 import type { Metadata } from "next";
 import { ThemeProvider as NextJSThemeProvider } from "next-themes";
 import { Quicksand, Roboto, Volkhov } from "next/font/google";
-import { Suspense } from "react";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -82,7 +81,7 @@ export default function RootLayout({
           <TooltipProvider>
             <TimelineProvider>
               <Navbar />
-              <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+              {children}
               <Footer />
             </TimelineProvider>
           </TooltipProvider>

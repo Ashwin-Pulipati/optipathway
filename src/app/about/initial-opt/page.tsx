@@ -11,8 +11,8 @@ import {
 
 const InitialOptProTips: React.FC = () => {
   return (
-    <div className="mt-8 max-w-7xl mx-auto w-full">
-      <Card className="space-y-8 p-14 shadow-lg">
+    <div className="mt-8 max-w-7xl mx-auto w-full px-6 md:px-10">
+      <Card className="space-y-8 p-8 md:p-14 shadow-lg">
         {/* Main Title */}
         <CardHeader className="text-center p-0">
           <CardTitle className="text-3xl font-serif font-extrabold text-foreground mb-4">
@@ -472,8 +472,8 @@ const InitialOptProTips: React.FC = () => {
                     <strong className="text-primary">August 13, 2025</strong>.
                   </li>
                   <li>
-                    <strong className="text-muted-foreground">Result:</strong> Your
-                    new EAD card will show a start date of{" "}
+                    <strong className="text-muted-foreground">Result:</strong>{" "}
+                    Your new EAD card will show a start date of{" "}
                     <strong className="text-primary">August 13, 2025</strong>,
                     and an end date of{" "}
                     <strong className="text-primary">August 12, 2026</strong>.

@@ -16,7 +16,7 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AlertTriangle } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
 type ActiveTab = "timeline" | "ead" | "stem" | "h1b";
 
@@ -30,7 +30,9 @@ const toolNavigationItems = [
 export default function ToolsPage() {
   return (
     <TimelineProvider>
-      <ToolsPageContent />
+      <Suspense>
+        <ToolsPageContent />
+      </Suspense>
     </TimelineProvider>
   );
 }

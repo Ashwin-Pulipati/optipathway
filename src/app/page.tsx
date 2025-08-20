@@ -114,7 +114,7 @@ export default function HomePage() {
         {/* --- MODIFICATION ENDS HERE --- */}
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-          <Card className="p-6 rounded-lg shadow-md border border-border animate-fade-in-up delay-600">
+          <Card className="p-6 rounded-lg shadow-md border border-border ">
             <CardHeader className="p-0 mb-3 flex-row items-center gap-3">
               <Zap className="h-8 w-8 text-primary" />
               <CardTitle className="text-xl font-semibold font-serif text-foreground">
@@ -128,7 +128,7 @@ export default function HomePage() {
               </CardDescription>
             </CardContent>
           </Card>
-          <Card className="p-6 rounded-lg shadow-md border border-border animate-fade-in-up delay-700">
+          <Card className="p-6 rounded-lg shadow-md border border-border">
             <CardHeader className="p-0 mb-3 flex-row items-center gap-3">
               <Lightbulb className="h-8 w-8 text-primary" />
               <CardTitle className="text-xl font-semibold font-serif text-foreground">
@@ -142,7 +142,7 @@ export default function HomePage() {
               </CardDescription>
             </CardContent>
           </Card>
-          <Card className="p-6 rounded-lg shadow-md border border-border animate-fade-in-up delay-800">
+          <Card className="p-6 rounded-lg shadow-md border border-border">
             <CardHeader className="p-0 mb-3 flex-row items-center gap-3">
               <TrendingUp className="h-8 w-8 text-primary" />
               <CardTitle className="text-xl font-semibold font-serif text-foreground">

@@ -36,7 +36,7 @@ const Footer = () => {
               href="/about/initial-opt"
               className="hover:text-primary transition-colors"
             >
-              Pro Tips
+              About
             </Link>
             <Link
               href="/forms"
