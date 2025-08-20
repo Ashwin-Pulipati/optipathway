@@ -7,6 +7,7 @@ import { ThemeProvider as NextJSThemeProvider } from "next-themes";
 import { Quicksand, Roboto, Volkhov } from "next/font/google";
 import { Suspense } from "react";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const quickSand = Quicksand({
   variable: "--font-quicksand",
@@ -86,6 +87,7 @@ export default function RootLayout({
             </TimelineProvider>
           </TooltipProvider>
         </NextJSThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
