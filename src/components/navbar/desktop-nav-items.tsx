@@ -17,7 +17,7 @@ const DesktopNavItems = () => {
   const pathname = usePathname();
 
   return (
-    <div className="hidden lg:flex items-center space-x-4">
+    <div className="hidden lg:flex items-center gap-x-2">
       {navItems.map((item) => {
         const isActive =
           item.path === pathname ||
@@ -35,19 +35,20 @@ const DesktopNavItems = () => {
                   isActive
                     ? "bg-primary text-primary-foreground"
                     : "text-foreground",
-                  "hover:bg-primary hover:text-primary-foreground" // Simplified hover state
+                  "hover:bg-accent hover:text-foreground" // Simplified hover state
                 )}
               >
                 {item.name}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
+
             <DropdownMenuContent align="start" className="w-48">
               {item.children.map((child) => (
                 <Link key={child.name} href={child.path}>
                   <DropdownMenuItem
                     className={cn(
-                      "cursor-pointer",
+                      "cursor-pointer my-2 mx-1",
                       pathname.startsWith(child.path) // Use startsWith for parent paths
                         ? "bg-accent text-accent-foreground"
                         : ""
@@ -69,7 +70,7 @@ const DesktopNavItems = () => {
                 isActive
                   ? "bg-primary text-primary-foreground"
                   : "text-foreground",
-                "hover:bg-primary hover:text-primary-foreground"
+                "hover:bg-accent hover:text-foreground"
               )}
             >
               {item.name}
