@@ -40,6 +40,21 @@ This project is built with a modern tech stack that ensures a fast, responsive, 
 - **Pro Tips & Examples:** Access detailed guides and real-world scenarios to navigate complex situations.
 - **Comprehensive FAQ:** Find answers to common questions about F-1 visa regulations and processes.
 
+## 🏗️ System Architecture
+
+OptiPathway is engineered as a highly modular **Next.js 15** application. The architecture focuses on real-time data synchronization between disjointed input calculators and a centralized visualization engine.
+
+1. **Component Layer (Modular UI)**
+- **Calculator Micro-frontend:** The application is split into specialized "Calculators" (Graduation, Initial OPT, STEM OPT, and H1B Cap-Gap). Each is an independent component that handles its own validation logic.
+- **Shadcn UI & Radix Primitives:** Utilizes a custom-styled design system for accessibility and a polished, modern look.
+- **Responsive Visualization:** A dedicated VisualTimeline component that dynamically recalculates and renders the user's journey as they input data.
+1. **State Management (The Provider Pattern)**
+- **Centralized Timeline Context:** Instead of complex prop-drilling, the app uses the **React Context API** with a TimelineProvider.
+- **Single Source of Truth:** All calculators act as "producers" that update the TimelineContext. The visualization component acts as a "consumer," ensuring that any change in one part of the visa process (e.g., a graduation date change) instantly ripples through the entire multi-year timeline.
+1. **Logic Engine (Date Arithmetic)**
+- **Complex Date Logic:** Powered by **date-fns**, the system handles the intricate legal durations of F-1 status (e.g., the 60-day grace period, the 90-day unemployment rule, and the Cap-Gap extension periods).
+- **Validation Layer:** Ensures that user-inputted dates follow USCIS regulations (e.g., STEM OPT cannot start before Initial OPT ends), providing immediate visual feedback for invalid timelines.
+
 ## ▶️ Getting Started
 
 To get a local copy up and running, follow these simple steps.
