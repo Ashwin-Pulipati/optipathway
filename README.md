@@ -31,6 +31,15 @@ This project is built with a modern tech stack that ensures a fast, responsive, 
 - **Components:** [Shadcn/UI](https://ui.shadcn.com/)
 - **Deployment:** [Vercel](https://vercel.com/)
 
+## ✅ Key Features
+
+- **Graduation Timeline Calculator:** Pinpoint your 60-day grace period and other key dates around your program completion.
+- **Initial OPT & STEM OPT Calculators:** Determine your precise application windows and employment authorization periods.
+- **H1B Cap-Gap Calculator:** Understand and visualize the transition period from F-1 to H1B status.
+- **Interactive Visual Timeline:** Get a clear, personalized overview of your entire F-1 journey, from graduation to post-completion work authorization.
+- **Pro Tips & Examples:** Access detailed guides and real-world scenarios to navigate complex situations.
+- **Comprehensive FAQ:** Find answers to common questions about F-1 visa regulations and processes.
+  
 ## 🏗️ System Architecture
 
 <div align="center">
@@ -53,14 +62,6 @@ OptiPathway is engineered as a highly modular **Next.js 15** application. The ar
 - **Complex Date Logic:** Powered by **date-fns**, the system handles the intricate legal durations of F-1 status (e.g., the 60-day grace period, the 90-day unemployment rule, and the Cap-Gap extension periods).
 - **Validation Layer:** Ensures that user-inputted dates follow USCIS regulations (e.g., STEM OPT cannot start before Initial OPT ends), providing immediate visual feedback for invalid timelines.
 
-## ✅ Key Features
-
-- **Graduation Timeline Calculator:** Pinpoint your 60-day grace period and other key dates around your program completion.
-- **Initial OPT & STEM OPT Calculators:** Determine your precise application windows and employment authorization periods.
-- **H1B Cap-Gap Calculator:** Understand and visualize the transition period from F-1 to H1B status.
-- **Interactive Visual Timeline:** Get a clear, personalized overview of your entire F-1 journey, from graduation to post-completion work authorization.
-- **Pro Tips & Examples:** Access detailed guides and real-world scenarios to navigate complex situations.
-- **Comprehensive FAQ:** Find answers to common questions about F-1 visa regulations and processes.
   
 ## ▶️ Getting Started
 
