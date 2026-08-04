@@ -10,10 +10,16 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { addDays, addYears, format, isAfter, isBefore, parseISO } from "date-fns";
+import { format, isAfter, isBefore, parseISO } from "date-fns";
 import { useEffect, useState } from "react";
 import { useTimeline } from "../../app/timeline-context";
 import { cn } from "@/lib/utils";
+import {
+  INITIAL_UNEMPLOYMENT_LIMIT,
+  initialOptEndDate,
+  optStartDateRange,
+  unemploymentDeadline,
+} from "@/lib/opt-dates";
 
 const EadTimelineCalculator: React.FC = () => {
   const { graduationDate, setInitialOptStartDate, setInitialOptEndDate } =
@@ -23,12 +29,16 @@ const EadTimelineCalculator: React.FC = () => {
   const [showResults, setShowResults] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  // Determine the valid date range for OPT start date
-  const minOptStartDate = graduationDate
-    ? format(parseISO(graduationDate), "yyyy-MM-dd")
+  // Determine the valid date range for OPT start date: the 60-day grace period,
+  // which begins the day after the I-20 program end date.
+  const startDateRange = graduationDate
+    ? optStartDateRange(parseISO(graduationDate))
+    : null;
+  const minOptStartDate = startDateRange
+    ? format(startDateRange.min, "yyyy-MM-dd")
     : "";
-  const maxOptStartDate = graduationDate
-    ? format(addDays(parseISO(graduationDate), 60), "yyyy-MM-dd")
+  const maxOptStartDate = startDateRange
+    ? format(startDateRange.max, "yyyy-MM-dd")
     : "";
 
   useEffect(() => {
@@ -41,18 +51,14 @@ const EadTimelineCalculator: React.FC = () => {
   }, [graduationDate]);
 
   const formatDate = (date: Date): string => format(date, "MMMM do, yyyy");
-  const initialUnemploymentLimit = 90;
 
   let initialOptEndDateCalc: Date | null = null;
   let initialUnemploymentDeadline: Date | null = null;
 
   if (initialOptStartDateInput) {
     const startDate = parseISO(initialOptStartDateInput);
-    initialOptEndDateCalc = addDays(addYears(startDate, 1), -1);
-    initialUnemploymentDeadline = addDays(
-      startDate,
-      initialUnemploymentLimit - 1
-    );
+    initialOptEndDateCalc = initialOptEndDate(startDate);
+    initialUnemploymentDeadline = unemploymentDeadline(startDate);
   }
 
   const handleCalculate = () => {
@@ -60,17 +66,18 @@ const EadTimelineCalculator: React.FC = () => {
     if (!initialOptStartDateInput || !graduationDate) return;
 
     const selectedStartDate = parseISO(initialOptStartDateInput);
-    const gradDate = parseISO(graduationDate);
-    const gracePeriodEndDate = addDays(gradDate, 60);
+    const { min, max } = optStartDateRange(parseISO(graduationDate));
 
     // Final validation check before showing results
-    if (isBefore(selectedStartDate, gradDate)) {
-      setError("OPT start date cannot be before your graduation date.");
+    if (isBefore(selectedStartDate, min)) {
+      setError(
+        "OPT start date must be on or after the day following your graduation date."
+      );
       setShowResults(false);
       return;
     }
 
-    if (isAfter(selectedStartDate, gracePeriodEndDate)) {
+    if (isAfter(selectedStartDate, max)) {
       setError("OPT start date must be within 60 days after graduation.");
       setShowResults(false);
       return;
@@ -156,7 +163,7 @@ const EadTimelineCalculator: React.FC = () => {
                     </span>
                     <div className="flex flex-wrap items-baseline gap-x-1">
                       <span className="text-primary font-semibold">
-                        {initialUnemploymentLimit} days total, cumulative.
+                        {INITIAL_UNEMPLOYMENT_LIMIT} days total, cumulative.
                       </span>
                     </div>
                     <span className="text-xs text-muted-foreground block mt-2">

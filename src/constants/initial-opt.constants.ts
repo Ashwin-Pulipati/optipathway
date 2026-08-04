@@ -68,7 +68,7 @@ export const initialOptContent: PageContent = {
                 { type: "strong", text: "60-Day Grace Period" },
                 {
                   type: "text",
-                  text: ": This period begins immediately after your I-20 program end date. During this time, you can remain in the U.S., but you are generally ",
+                  text: ": This period begins the day after your I-20 program end date and runs for 60 days. During this time, you can remain in the U.S., but you are generally ",
                 },
                 { type: "strong-destructive", text: "not authorized to work" },
                 {
@@ -108,7 +108,7 @@ export const initialOptContent: PageContent = {
                           { type: "text", text: " is approximately " },
                           {
                             type: "strong-primary",
-                            text: "March 1, 2024, to July 29, 2024",
+                            text: "March 2, 2024, to July 30, 2024",
                           },
                           { type: "text", text: "." },
                         ],
@@ -121,7 +121,7 @@ export const initialOptContent: PageContent = {
                           { type: "text", text: " is " },
                           {
                             type: "strong-primary",
-                            text: "May 31, 2024, to July 29, 2024",
+                            text: "June 1, 2024, to July 30, 2024",
                           },
                           { type: "text", text: "." },
                         ],
