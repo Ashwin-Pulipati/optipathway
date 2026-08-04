@@ -10,9 +10,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { addDays, format, parseISO, subDays } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { useState } from "react";
 import { useTimeline } from "../../app/timeline-context";
+import {
+  earliestApplicationDate,
+  gracePeriodEnd,
+  gracePeriodStart,
+} from "@/lib/opt-dates";
 
 const OptTimelineCalculator: React.FC = () => {
   const { setGraduationDate } = useTimeline();
@@ -21,20 +26,18 @@ const OptTimelineCalculator: React.FC = () => {
 
   const formatDate = (date: Date): string => format(date, "MMMM dd, yyyy");
 
-  const applicationWindowStartDays = 91;
-  const applicationWindowEndDays = 59;
-
   let applyStartDate: Date | null = null;
   let applyEndDate: Date | null = null;
-  let gracePeriodStart: Date | null = null;
-  let gracePeriodEnd: Date | null = null;
+  let graceStartDate: Date | null = null;
+  let graceEndDate: Date | null = null;
 
   if (selectedDate) {
     const gradDate = parseISO(selectedDate);
-    applyStartDate = subDays(gradDate, applicationWindowStartDays);
-    applyEndDate = addDays(gradDate, applicationWindowEndDays);
-    gracePeriodStart = gradDate;
-    gracePeriodEnd = applyEndDate;
+    applyStartDate = earliestApplicationDate(gradDate);
+    // The filing deadline is the last day of the grace period.
+    applyEndDate = gracePeriodEnd(gradDate);
+    graceStartDate = gracePeriodStart(gradDate);
+    graceEndDate = applyEndDate;
   }
 
   const handleCalculate = () => {
@@ -84,8 +87,8 @@ const OptTimelineCalculator: React.FC = () => {
         selectedDate &&
         applyStartDate &&
         applyEndDate &&
-        gracePeriodStart &&
-        gracePeriodEnd && (
+        graceStartDate &&
+        graceEndDate && (
           <Card className="bg-secondary/20 border-secondary mt-8 shadow-inner py-0">
             <CardContent className="p-4 md:p-6 space-y-4 pt-6">
               <p className="text-foreground font-medium mb-4">
@@ -112,11 +115,11 @@ const OptTimelineCalculator: React.FC = () => {
                   </span>
                   <div className="flex flex-wrap items-baseline gap-x-1">
                     <span className="text-primary font-semibold">
-                      {formatDate(gracePeriodStart)}
+                      {formatDate(graceStartDate)}
                     </span>{" "}
                     to{" "}
                     <span className="text-primary font-semibold">
-                      {formatDate(gracePeriodEnd)}
+                      {formatDate(graceEndDate)}
                     </span>
                   </div>
                 </li>
